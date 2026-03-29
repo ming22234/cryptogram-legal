@@ -5,40 +5,162 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>밍초단 - 모바일 게임 개발</title>
   <style>
-    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; max-width: 720px; margin: 0 auto; padding: 40px 16px; color: #222; line-height: 1.7; }
-    h1 { font-size: 24px; margin-bottom: 4px; }
-    .subtitle { font-size: 14px; color: #888; margin-bottom: 32px; }
-    h2 { font-size: 18px; margin-top: 32px; color: #333; }
-    p, li { font-size: 15px; color: #444; }
-    .app-card { border: 1px solid #e0e0e0; border-radius: 12px; padding: 20px; margin: 16px 0; }
-    .app-name { font-size: 17px; font-weight: 600; color: #111; }
-    .app-desc { font-size: 14px; color: #555; margin-top: 6px; }
-    .links { margin-top: 32px; }
-    .links a { display: inline-block; margin-right: 16px; font-size: 14px; color: #1a73e8; text-decoration: none; }
-    .links a:hover { text-decoration: underline; }
-    .contact { margin-top: 32px; padding-top: 20px; border-top: 1px solid #eee; font-size: 14px; color: #666; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: #222; line-height: 1.7; }
+
+    /* 히어로 */
+    .hero {
+      background: linear-gradient(135deg, #2d8a4e 0%, #1a6b3a 100%);
+      color: #fff;
+      text-align: center;
+      padding: 80px 20px 60px;
+    }
+    .hero h1 { font-size: 36px; font-weight: 800; margin-bottom: 8px; }
+    .hero p { font-size: 16px; opacity: 0.85; }
+
+    /* 섹션 공통 */
+    .section { max-width: 800px; margin: 0 auto; padding: 48px 20px; }
+    .section-title { font-size: 22px; font-weight: 700; text-align: center; margin-bottom: 32px; color: #111; }
+
+    /* 소개 */
+    .intro { text-align: center; background: #fafafa; }
+    .intro p { font-size: 16px; color: #555; max-width: 560px; margin: 0 auto; }
+
+    /* 앱 카드 */
+    .app-card {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      background: #fff;
+      border: 1px solid #e8e8e8;
+      border-radius: 16px;
+      padding: 28px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+    .app-icon {
+      width: 80px;
+      height: 80px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #2d8a4e, #4eca6a);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 36px;
+      flex-shrink: 0;
+      color: #fff;
+      font-weight: 800;
+    }
+    .app-info { flex: 1; }
+    .app-name { font-size: 18px; font-weight: 700; color: #111; margin-bottom: 6px; }
+    .app-desc { font-size: 14px; color: #666; line-height: 1.6; margin-bottom: 12px; }
+    .app-badge { display: inline-block; background: #2d8a4e; color: #fff; font-size: 12px; font-weight: 600; padding: 4px 12px; border-radius: 20px; text-decoration: none; }
+    .app-badge:hover { background: #246f3e; }
+
+    /* 특징 */
+    .features { background: #fafafa; }
+    .feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .feature-item { text-align: center; padding: 24px 16px; background: #fff; border-radius: 12px; border: 1px solid #eee; }
+    .feature-emoji { font-size: 32px; margin-bottom: 10px; }
+    .feature-title { font-size: 15px; font-weight: 600; color: #222; margin-bottom: 4px; }
+    .feature-desc { font-size: 13px; color: #888; }
+
+    /* 법적 링크 */
+    .legal { text-align: center; background: #fff; }
+    .legal-links { display: flex; justify-content: center; gap: 24px; }
+    .legal-links a { font-size: 14px; color: #1a73e8; text-decoration: none; padding: 10px 20px; border: 1px solid #ddd; border-radius: 8px; }
+    .legal-links a:hover { background: #f5f5f5; }
+
+    /* 푸터 */
+    .footer {
+      text-align: center;
+      padding: 32px 20px;
+      background: #333;
+      color: #aaa;
+      font-size: 13px;
+    }
+    .footer a { color: #ccc; text-decoration: none; }
+    .footer a:hover { color: #fff; }
+    .footer .contact-email { margin-bottom: 8px; }
+
+    @media (max-width: 600px) {
+      .hero { padding: 60px 16px 44px; }
+      .hero h1 { font-size: 28px; }
+      .app-card { flex-direction: column; text-align: center; }
+      .feature-grid { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
-  <h1>밍초단</h1>
-  <p class="subtitle">모바일 게임 개발</p>
 
-  <p>밍초단은 한국어의 재미를 게임으로 전달하는 모바일 게임 개발사입니다.</p>
-
-  <h2>앱</h2>
-  <div class="app-card">
-    <div class="app-name">한글 크립토그램 - 단어 퍼즐 게임, 암호 해독</div>
-    <div class="app-desc">숫자로 암호화된 한글 문장을 추리하는 두뇌 퍼즐 게임. 속담, K-POP, 영화 명대사 등 570개 이상의 스테이지 수록.</div>
+  <div class="hero">
+    <h1>밍초단</h1>
+    <p>한국어의 재미를 게임으로 전달합니다</p>
   </div>
 
-  <div class="links">
-    <a href="privacy.html">개인정보처리방침</a>
-    <a href="terms.html">이용약관</a>
+  <div class="section intro">
+    <p>밍초단은 한국어와 한글의 매력을 누구나 즐길 수 있는 모바일 게임으로 만드는 개발사입니다. 우리의 첫 번째 게임, 한글 크립토그램을 소개합니다.</p>
   </div>
 
-  <div class="contact">
-    <strong>문의</strong><br/>
-    이메일: <a href="mailto:wnalstmd@gmail.com">wnalstmd@gmail.com</a>
+  <div class="section">
+    <h2 class="section-title">우리의 게임</h2>
+    <div class="app-card">
+      <div class="app-icon">ㅎ</div>
+      <div class="app-info">
+        <div class="app-name">한글 크립토그램</div>
+        <div class="app-desc">숫자로 암호화된 한글 문장을 추리하는 두뇌 퍼즐 게임. 속담, K-POP, 영화 명대사 등 570개 이상의 스테이지에서 숨겨진 한글을 해독하세요.</div>
+        <a class="app-badge" href="https://play.google.com/store/apps/details?id=com.mingchodan.koreancryptogram" target="_blank">Google Play에서 다운로드</a>
+      </div>
+    </div>
   </div>
+
+  <div class="section features">
+    <h2 class="section-title">게임 특징</h2>
+    <div class="feature-grid">
+      <div class="feature-item">
+        <div class="feature-emoji">🔤</div>
+        <div class="feature-title">한글 암호 해독</div>
+        <div class="feature-desc">숫자로 인코딩된 자모를 추리하여 문장을 완성</div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-emoji">📚</div>
+        <div class="feature-title">570+ 스테이지</div>
+        <div class="feature-desc">속담, K-POP, 명대사 등 다양한 카테고리</div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-emoji">🧠</div>
+        <div class="feature-title">두뇌 훈련</div>
+        <div class="feature-desc">논리적 추리와 패턴 분석으로 사고력 향상</div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-emoji">🏆</div>
+        <div class="feature-title">리더보드</div>
+        <div class="feature-desc">Google Play Games 연동 순위 경쟁</div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-emoji">💡</div>
+        <div class="feature-title">힌트 시스템</div>
+        <div class="feature-desc">막힐 때 힌트와 돋보기로 도움</div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-emoji">🆓</div>
+        <div class="feature-title">무료 플레이</div>
+        <div class="feature-desc">모든 스테이지를 무료로 즐기세요</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section legal">
+    <h2 class="section-title">법적 고지</h2>
+    <div class="legal-links">
+      <a href="privacy.html">개인정보처리방침</a>
+      <a href="terms.html">이용약관</a>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="contact-email">문의: <a href="mailto:wnalstmd@gmail.com">wnalstmd@gmail.com</a></div>
+    <div>&copy; 2026 밍초단. All rights reserved.</div>
+  </div>
+
 </body>
 </html>
