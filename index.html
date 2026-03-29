@@ -64,6 +64,23 @@
     .feature-title { font-size: 15px; font-weight: 600; color: #222; margin-bottom: 4px; }
     .feature-desc { font-size: 13px; color: #888; }
 
+    /* 스크린샷 */
+    .screenshots { background: #fff; }
+    .screenshot-scroll {
+      display: flex;
+      gap: 12px;
+      overflow-x: auto;
+      padding: 4px 0 16px;
+      -webkit-overflow-scrolling: touch;
+    }
+    .screenshot-scroll img {
+      height: 400px;
+      border-radius: 12px;
+      border: 1px solid #e0e0e0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      flex-shrink: 0;
+    }
+
     /* 법적 링크 */
     .legal { text-align: center; background: #fff; }
     .legal-links { display: flex; justify-content: center; gap: 24px; }
@@ -110,6 +127,17 @@
         <div class="app-desc">숫자로 암호화된 한글 문장을 추리하는 두뇌 퍼즐 게임. 속담, K-POP, 영화 명대사 등 570개 이상의 스테이지에서 숨겨진 한글을 해독하세요.</div>
         <span class="app-badge">Google Play 출시 예정</span>
       </div>
+    </div>
+  </div>
+
+  <div class="section screenshots">
+    <h2 class="section-title">게임 화면</h2>
+    <div class="screenshot-scroll">
+      <img src="screenshot1.png" alt="인게임 화면 1" />
+      <img src="screenshot2.png" alt="튜토리얼 화면" />
+      <img src="screenshot3.png" alt="인게임 화면 2" />
+      <img src="screenshot4.png" alt="인게임 화면 3" />
+      <img src="screenshot5.png" alt="홈 화면" />
     </div>
   </div>
 
